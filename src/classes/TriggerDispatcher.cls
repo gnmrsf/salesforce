@@ -1,6 +1,7 @@
 public with sharing class TriggerDispatcher {
 
 	private static final String SPRINT = 'kavayah__Sprint__c';
+	private static final String SPRINTTASK = 'kavayah__Sprint_Task__c';
 
 	public static ITriggerEntry activeInstance = null;
 	public static Map<Id, SObject> sObjectsToUpdate = new Map<Id, SObject>();
@@ -76,8 +77,11 @@ public with sharing class TriggerDispatcher {
 	      //execute(new AccountSync(), tp);
 	      //execute(new CalloutQueue(), tp);
     	}
-    //else if(tp.triggerObject == SUSER && tp.isAfter && tp.isUpdate)
-    //  execute(new SyncUserToContact(), tp);
+    else if(tp.triggerObject == SPRINTTASK && tp.isAfter && tp.isUpdate)
+    {
+    //  execute(new SyncUserToContact(), tp);    	
+    }
+
     
         
     	if(sObjectsToDelete.size() > 0)
